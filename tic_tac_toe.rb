@@ -1,9 +1,11 @@
 class Tic_Tac_Toe
-  def display
-    puts row = [" " "|" " " "|" " "]
-    puts divisior = "-----------"
-    puts row
-    puts divisior
-    puts row
-  end  
+  board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  def display_board(board)
+    puts [ " #{board[0]} " " | " " #{board[1]} " " | " " #{board[2]} "]
+    puts "---------------"
+    puts [ " #{board[0]} " " | " " #{board[1]} " " | " " #{board[2]} "]
+    puts "---------------"
+    puts [ " #{board[0]} " " | " " #{board[1]} " " | " " #{board[2]} "]
+  end
+  #Tic_Tac_Toe.new.display_board(board)  
 end

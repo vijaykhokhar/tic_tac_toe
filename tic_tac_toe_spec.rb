@@ -5,14 +5,14 @@ describe "Tic_Tac_Toe" do
     @ttt = Tic_Tac_Toe.new
   end
 
+  let(:output) { puts row = [ " " " | " " " " | " " "]
+    puts divisior = "---------"
+    puts row
+    puts divisior
+    puts row }
+
   it "display should be initially empty" do
-    skip
-    output = @ttt.display
-    expect(output).to include("   |   |   ")
-    expect(output).to include("-----------")
-    expect(output).to include("   |   |   ")
-    expect(output).to include("-----------")
-    expect(output).to include("   |   |   ")
+    expect(output).to eql(@ttt.display_board())
   end
 
   it "should have all winning combinations" do
@@ -75,13 +75,14 @@ describe "Tic_Tac_Toe" do
   end
 
   describe "should show correct winner" do 
-    skip
     it "should X when X won" do 
+      skip
       board = ["X", "X", "X", "O", "O", " ", " ", "O", " "]
       expect(@ttt.winner).to be 'X'
     end
 
     it "should O when O won" do 
+      skip
       board = ["O", "O", "O", "X", "X", " ", " ", "X", " "]
       expect(@ttt.winner).to be 'O'
     end
