@@ -4,15 +4,52 @@ describe "Tic_Tac_Toe" do
   before(:each) do
     @ttt = Tic_Tac_Toe.new
   end
+  #use helper method for board[2] = "X"
+  let(:board) { @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '] }
 
-  let(:output) { puts row = [ " " " | " " " " | " " "]
-    puts divisior = "---------"
-    puts row
-    puts divisior
-    puts row }
+  it "board should be initially empty" do
+    expect(board).to eql(@board)
+  end
 
-  it "display should be initially empty" do
-    expect(output).to eql(@ttt.display_board())
+  it "display should be empty first" do
+    expect(@ttt.display_board(1)).to be nil
+  end
+
+  it "input should be integer" do
+    expect(@ttt.input_to_index("5")).to eql(4)
+  end
+
+  it "should make a move" do
+    expect(@ttt.move(board, 2, "X")).to eql("X")
+  end
+
+  it "board position should be taken" do
+    board[2] = "X"
+    expect(@ttt.position_taken?(board, 2)).to be true
+  end
+
+  it "board position should not be taken" do
+    expect(@ttt.position_taken?(board, 4)).to be false
+  end
+
+  it "should a valid move" do
+    board[3] = "X" 
+    expect(@ttt.valid_move?(board, 2)).to be true
+  end
+
+  it "should not be a valid move" do
+    board[9] = "O"
+    expect(@ttt.valid_move?(board, 9)).to be false
+  end
+ 
+  it "trun should be counted" do
+    board[5] = "O"
+    expect(@ttt.turn_count(board)).to eql(1)
+  end
+
+  it "current player should be checked" do
+    player = @ttt.current_player(board) 
+    expect(player).to eql("X")
   end
 
   it "should have all winning combinations" do
@@ -86,12 +123,6 @@ describe "Tic_Tac_Toe" do
       board = ["O", "O", "O", "X", "X", " ", " ", "X", " "]
       expect(@ttt.winner).to be 'O'
     end
-  end
-
-  it "should a valid move" do 
-    skip
-    move_index = @ttt.move
-    expect(move_index).to be_valid
   end
 
 end
