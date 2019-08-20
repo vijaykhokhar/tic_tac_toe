@@ -1,6 +1,19 @@
 class Tic_Tac_Toe
+
+  WIN_COMBINATIONS = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [6, 4, 2]
+  ]
+
+  @winner_player = ''
   board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  
+
   def display_board(board)
     puts [ " #{board[0]} " " | " " #{board[1]} " " | " " #{board[2]} "]
     puts "---------------"
@@ -38,5 +51,82 @@ class Tic_Tac_Toe
   def current_player(board)
     turn_count(board) % 2 == 0 ? "X" : "O"
   end
-  #puts Tic_Tac_Toe.new.turn_count(board)  
+
+  def player_number(board)
+    turn_count(board) % 2 == 0 ? "1" : "2"
+  end
+
+  def turn(board)
+    puts "Please, player #{player_number(board)} enter 1-9"
+    user_input = gets.strip
+    index = input_to_index(user_input)
+    if valid_move?(board, index)
+      move(board, index, current_player(board))
+      display_board(board)
+      turn(board) if !won?(board) && !full?(board)
+    end
+    #return board
+    #display_board(board)
+  end
+
+  def play(board)
+    display_board(board)
+    until over?(board)
+      turn(board)
+    end
+    if won?(board)
+      winner(board) == "X" || winner(board) == "O"
+      puts "Congratulation #{winner(board)}"
+    elsif draw?(board)
+      puts "Cats game"
+    end
+  end
+  
+  def won?(board)
+    WIN_COMBINATIONS.each do |win_combination|
+      win_index_1 = win_combination[0]
+      win_index_2 = win_combination[1]
+      win_index_3 = win_combination[2]
+
+      position_1 = board[win_index_1]
+      position_2 = board[win_index_2]
+      position_3 = board[win_index_3]
+
+      if position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1)
+        @winner_player = position_1
+        return true 
+      end
+    end
+    return false
+  end
+
+  def full?(board)
+    board.all? { |i| i == "X" || i == "O" }
+  end
+
+  def draw?(board)
+    if won?(board)
+      return false
+    elsif !won?(board) && !full?(board)
+      return false
+    else !won?(board) && full?(board)
+      return true
+    end
+  end
+
+  def over?(board)
+    if won?(board) || full?(board)
+      return true
+    end
+    return false
+  end
+
+  def winner(board)
+    return @winner_player if won?(board)
+  end
+
+  def player(board)
+    board.all? { |i| i == "X" || i == "O"}
+  end
+  Tic_Tac_Toe.new.play(board)  
 end
