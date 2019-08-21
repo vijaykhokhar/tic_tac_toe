@@ -128,5 +128,5 @@ class Tic_Tac_Toe
   def player(board)
     board.all? { |i| i == "X" || i == "O"}
   end
-  Tic_Tac_Toe.new.play(board)  
+  #Tic_Tac_Toe.new.play(board)  
 end
