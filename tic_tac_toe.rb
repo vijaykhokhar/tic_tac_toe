@@ -31,13 +31,11 @@ class Tic_Tac_Toe
   end
 
   def position_taken?(board, index)
-    return false if( board[index] == " " || board[index] == "" || board[index] == nil)
-    return true
+    (board[index] == " " || board[index] == "" || board[index] == nil) ? false : true
   end
 
   def valid_move?(board, index)
-    return true if( index.between?(0,8) && !position_taken?(board, index))
-    return false
+    (index.between?(0,8) && !position_taken?(board, index)) ? true : false
   end
 
   def turn_count(board)
