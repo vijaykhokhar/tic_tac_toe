@@ -113,10 +113,7 @@ class Tic_Tac_Toe
   end
 
   def over?(board)
-    if won?(board) || full?(board)
-      return true
-    end
-    return false
+    won?(board) || full?(board) ? true : false
   end
 
   def winner(board)

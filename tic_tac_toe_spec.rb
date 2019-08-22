@@ -116,11 +116,6 @@ describe "Tic_Tac_Toe" do
     expect(@ttt.over?(board)).to be false
   end
 
-  it "game should have 2 player" do
-    board = ["X", "X", "O", "O", "O", "X", "X", "O", "O"]
-    expect(@ttt.player(board)).to be true
-  end
-
   describe "should show correct winner" do 
     it "should X when X won" do 
       board = ["X", "X", "X", "O", "O", " ", " ", "O", " "]
