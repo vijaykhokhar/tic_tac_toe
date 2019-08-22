@@ -4,7 +4,6 @@ describe "Tic_Tac_Toe" do
   before(:each) do
     @ttt = Tic_Tac_Toe.new
   end
-  #use helper method for board[2] = "X"
   let(:board) { @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '] }
 
   it "board should be initially empty" do
@@ -51,11 +50,6 @@ describe "Tic_Tac_Toe" do
     player = @ttt.current_player(board) 
     expect(player).to eql("X")
   end
-
-  #it "player should taking turn" do
-    #board[5] = "X" #should accept display be similiar
-    #expect(@ttt.turn(board)).to eql(board)
-  #end
 
   it "should have all winning combinations" do
     expect(Tic_Tac_Toe::WIN_COMBINATIONS).to include([0, 1, 2])
@@ -138,5 +132,4 @@ describe "Tic_Tac_Toe" do
       expect(@ttt.winner(board)).to eql('O')
     end
   end
-
 end

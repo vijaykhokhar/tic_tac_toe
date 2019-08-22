@@ -65,8 +65,6 @@ class Tic_Tac_Toe
       display_board(board)
       turn(board) if !won?(board) && !full?(board)
     end
-    #return board
-    #display_board(board)
   end
 
   def play(board)
@@ -101,7 +99,7 @@ class Tic_Tac_Toe
   end
 
   def full?(board)
-    board.all? { |i| i == "X" || i == "O" }
+    board.all? { |player| player == "X" || player == "O" }
   end
 
   def draw?(board)
@@ -124,9 +122,4 @@ class Tic_Tac_Toe
   def winner(board)
     return @winner_player if won?(board)
   end
-
-  def player(board)
-    board.all? { |i| i == "X" || i == "O"}
-  end
-  #Tic_Tac_Toe.new.play(board)  
 end
